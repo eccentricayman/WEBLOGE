@@ -4,7 +4,10 @@ app = Flask(__name__)
 
 @app.route('/')
 def display():
-    return render_template("home.html")
+    if len(session.keys())==0:
+        return render_template("home.html")
+    else:
+        return redirect(url_for('story')
 
 @app.route('/addStory')
 def add():
