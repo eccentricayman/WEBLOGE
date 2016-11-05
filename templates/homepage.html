@@ -3,7 +3,11 @@
 <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='formstyle.css') }}" />
     <head> <title> wot </title> </head>
     <body>
+    <div class="page">
+    
         Temporary homepage. Login form at top, story feed at bottom.
+      </div>  
+      <div class="form">
         {% if user %}
             <br>Logged in as {{user}}.
             <form action="logout" method="post">
