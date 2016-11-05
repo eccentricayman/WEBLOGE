@@ -5,10 +5,6 @@ from hashlib import sha256
 
 app = Flask(__name__)
 
-f = "data/users.db"
-db = sqlite3.connect(f, check_same_thread=False)
-c = db.cursor()
-
 @app.route('/')
 def homepage():
     if session.get('username'):
@@ -43,22 +39,35 @@ def login():
     return render_template("homepage.html")
 
 def register(user, pw):
+    f = "data/users.db"
+    db = sqlite3.connect(f, check_same_thread=False)
+    c = db.cursor()
+
     c.execute('SELECT * FROM users WHERE username = ?', user)
     if len(list((c))) != 0:
         print "User %s exists" % user
+        db.close()
         return False,"Username taken"
     pw = sha256(pw).hexdigest()
     c.execute('INSERT INTO users VALUES (?,?,"")', (user, pw))
+    db.commit()
+    db.close()
     print "Registered successfully"
     return True,"Successfully registered"
 
 def auth_user(user, pw):
+    f = "data/users.db"
+    db = sqlite3.connect(f, check_same_thread=False)
+    c = db.cursor()
+
     pw = sha256(pw).hexdigest()
     c.execute('SELECT * FROM users WHERE username = ? and password = ?',
             (user, pw))
     if len(list((c))) == 1:
+        db.close()
         print "Login successful"
         return True,"Successfully logged in"
+    db.close()
     print "Login failed"
     return False,"Bad user/pass combo"
 
