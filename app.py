@@ -38,6 +38,12 @@ def login():
         return render_template("homepage.html", error=not valid, msg=msg)
     return render_template("homepage.html")
 
+@app.route('/logout', methods=['GET', 'POST'])
+def logout():
+    if session.get('username'):
+        session.pop('username')
+    return redirect(url_for('homepage'))
+
 def register(user, pw):
     f = "data/data.db"
     db = sqlite3.connect(f, check_same_thread=False)
@@ -79,8 +85,13 @@ def myStory():
 
 if __name__ == '__main__':
     if os.path.getsize("data/data.db") == 0:
+        f = "data/data.db"
+        db = sqlite3.connect(f, check_same_thread=False)
+        c = db.cursor()
         print "Initializing database"
         c.execute("CREATE TABLE users (username TEXT, password TEXT, contributedStories TEXT)")
+        db.commit()
+        db.close()
     app.debug=True
     app.secret_key = 'V\xfc\xa5\x04\x8ac\xa9#SU\x02*\x990\x9d\xb9\x08\xe6\xb5\x8d\xb9\xd2\xbe\x93\x94\xf1\xf2W7\xd6"\x0b\xe5\xc3{\xc7{U\xf8\xf4\xbc\xdd\xe6\x01\xea\t\\|<\xce'
     app.run()

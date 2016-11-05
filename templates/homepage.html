@@ -6,6 +6,9 @@
         Temporary homepage. Login form at top, story feed at bottom.
         {% if user %}
             <br>Logged in as {{user}}.
+            <form action="logout" method="post">
+                <input type="submit" name="logout" value="logout" />
+            </form>
         {% else %}
           <div class="form">
             <form action="login" method="post">
