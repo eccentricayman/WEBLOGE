@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head> <title> wot </title> </head>
+    <body>
+        Temporary homepage. Login form at top, story feed at bottom.
+        {% if user %}
+            <br>Logged in as {{user}}.
+        {% else %}
+            <form action="login" method="post">
+                <input type="text" name="username" />
+                <input type="password" name="password" />
+                <input type="submit" name="register" value="register" />
+                <input type="submit" name="login" value="login" />
+            </form>
+        {% endif %}
+        <br><br>
+        Stories!
+    </body>
+</html>
