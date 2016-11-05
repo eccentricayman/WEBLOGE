@@ -1,17 +1,20 @@
 <!DOCTYPE html>
 <html>
+<link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='formstyle.css') }}" />
     <head> <title> wot </title> </head>
     <body>
         Temporary homepage. Login form at top, story feed at bottom.
         {% if user %}
             <br>Logged in as {{user}}.
         {% else %}
+          <div class="form">
             <form action="login" method="post">
-                <input type="text" name="username" />
-                <input type="password" name="password" />
-                <input type="submit" name="register" value="register" />
-                <input type="submit" name="login" value="login" />
+                <input type="text" name="username" placeholder="username" />
+                <input type="password" name="password" placeholder="password"/>
+                <button type="submit" name="register" value="register" />register</button>
+                <button type="submit" name="login" value="login" />login</button>
             </form>
+          </div> 
         {% endif %}
         <br><br>
         Stories!
