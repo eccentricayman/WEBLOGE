@@ -1,29 +1,58 @@
-# users.db
-# username    password    contributedStories
-# ----------  ----------  ------------------
-
+from flask import render_template, url_for, redirect
 import sqlite3
-import hashlib
+from hashlib import sha256
 
-def auth(username, password, action):
-    
-    f = "users.db"
-    db = sqlite3.connect(f)
+def login(session, request):
+    if session.get('username'):
+        return redirect(url_for('homepage'))
+    #print request.form
+    try:
+        username = request.form['username']
+        password = request.form['password']
+    except:
+        return render_template('homepage.html', error=True, msg="Error.")
+    #print username
+    #print password
+    if request.form.get("register"):
+        valid,msg = register(username, password)
+        return render_template('homepage.html', error=not valid, msg=msg)
+    if request.form.get("login"):
+        valid,msg = auth_user(username, password)
+        if valid:
+            session['username'] = username
+            return render_template("homepage.html", error=not valid, msg=msg, user=username)
+        return render_template("homepage.html", error=not valid, msg=msg)
+    return render_template("homepage.html")
+
+def register(user, pw):
+    f = "data/data.db"
+    db = sqlite3.connect(f, check_same_thread=False)
     c = db.cursor()
-    
-    if action == "register":
-        userData = c.execute("SELECT username FROM users")
-        for user in userData:
-            if (username == user[0]):
-                return "Username already taken."
-        c.execute("INSERT INTO users VALUES ('%s', '%s', '%s')"%(username, hashlib.sha256(password).hexdigest(), ""))
-    elif action == "login":
-        userData = c.execute("SELECT username, password FROM users");
-        for user in userData:
-            if (username == user[0]):
-                if (hashlib.sha256(password).hexdigest() == user[1]):
-                    return "Logged in."
-                else:
-                    return "Incorrect password."
-        return "User not found."
-        
+
+    c.execute('SELECT * FROM users WHERE username = ?', user)
+    if len(list((c))) != 0:
+        print "User %s exists" % user
+        db.close()
+        return False,"Username taken"
+    pw = sha256(pw).hexdigest()
+    c.execute('INSERT INTO users VALUES (?,?,"")', (user, pw))
+    db.commit()
+    db.close()
+    print "Registered successfully"
+    return True,"Successfully registered"
+
+def auth_user(user, pw):
+    f = "data/data.db"
+    db = sqlite3.connect(f, check_same_thread=False)
+    c = db.cursor()
+
+    pw = sha256(pw).hexdigest()
+    c.execute('SELECT * FROM users WHERE username = ? and password = ?',
+            (user, pw))
+    if len(list((c))) == 1:
+        db.close()
+        print "Login successful"
+        return True,"Successfully logged in"
+    db.close()
+    print "Login failed"
+    return False,"Bad user/pass combo"
