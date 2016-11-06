@@ -1,5 +1,5 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
-
+@import url('https://fonts.googleapis.com/css?family=Itim');
 .page{
  margin-left:310px;
 }
@@ -15,8 +15,9 @@
   max-width: 220px;
   //margin: auto;
   padding: 45px;
+  //padding-top:10px;
   text-align: center;
-  box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.1), 0 5px 5px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.3), 0 10px 10px 0 rgba(0, 0, 0, 0.3);
 }
 .form input {
   font-family: "Roboto", sans-serif;
@@ -45,8 +46,18 @@
   cursor: pointer;
 }
 .form button:hover,.form button:active,.form button:focus {
-  background: RoyalBlue;
+  background: LightSteelBlue;
 }
+
+h1 {
+  font-size: 34px;
+  font-family: "Roboto", sans-serif;
+  color: LightSteelBlue;
+  font-family: 'Itim', cursive;
+}
+
 body {
+  font-family: "Roboto", sans-serif;
+  color: SteelBlue;
   background: LightSteelBlue;     
 }
