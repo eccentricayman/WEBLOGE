@@ -29,7 +29,7 @@ def register(user, pw):
     db = sqlite3.connect(f, check_same_thread=False)
     c = db.cursor()
 
-    c.execute('SELECT * FROM users WHERE username = ?', user)
+    c.execute('SELECT * FROM users WHERE username = ?', (user,))
     if len(list((c))) != 0:
         print "User %s exists" % user
         db.close()
