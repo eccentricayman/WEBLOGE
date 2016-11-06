@@ -2,10 +2,15 @@
 @import url('https://fonts.googleapis.com/css?family=Itim');
 @import url('https://fonts.googleapis.com/css?family=Poppins');
 @import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
 
 .page{
  margin-left:310px;
- padding:70px; padding-left:30px; padding-top: 0px;font-size: 15px;font-family: 'Poppins', sans-serif;
+ padding:70px; 
+ padding-left:30px; 
+ padding-top: 10px;
+ font-size: 15px;
+ font-family: 'Poppins', sans-serif;
 }
 
 .titlecard {
@@ -16,6 +21,7 @@
     padding: 20px;
     padding-top:5px;
     margin: 10px;
+    
     margin-left: 25%;
     background: #FFFFFF;
     color: #5c5c5c;
@@ -85,6 +91,13 @@ h1 {
 h2 {
   font-size: 34px;
   font-family: 'Permanent Marker';
+}
+
+.page h3 {
+  font-size: 90px;
+  font-family: 'Montserrat', sans-serif;
+  color: white;
+  text-align: center;
 }
 
 body {
