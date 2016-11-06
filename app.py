@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, session, url_for, redirect
 import os
 import sqlite3
 from hashlib import sha256
+import utils.addStory as AS
 
 app = Flask(__name__)
 
@@ -14,6 +15,10 @@ def homepage():
 @app.route('/addStory')
 def add():
     return render_template("addStory.html")
+
+@app.route("/loadStory", methods = ['GET', 'POST'])
+def loadS():
+    AS.addStory(request.form['name'], request.form['summary'], request.form['start'])
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
