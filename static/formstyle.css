@@ -1,11 +1,29 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 @import url('https://fonts.googleapis.com/css?family=Itim');
 @import url('https://fonts.googleapis.com/css?family=Poppins');
+
 .page{
  margin-left:310px;
+ padding:70px; padding-left:30px; padding-top: 0px;font-size: 15px;font-family: 'Poppins', sans-serif;
 }
+
+.titlecard {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    border-radius: 5px; 
+    width: 100%;
+    height: 100px;
+    padding: 20px;
+    margin: 10px;
+    background: #FFFFFF;
+    color: LightSteelBlue;
+}
+
+.titlecard:hover {
+    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.6);
+}
+
 .scrolling{
- z-index: 10; position: fixed; max-width: 220px;
+ z-index: 10; position: fixed; width: 220px;
 }
 .sform {
   z-index: 10; 
@@ -16,7 +34,7 @@
   right: 0;
   z-index: 1;
   background: #FFFFFF;
-  max-width: 220px;
+  width: 220px;
   //margin: auto;
   padding: 45px;
   //padding-top:10px;
