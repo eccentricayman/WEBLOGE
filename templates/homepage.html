@@ -7,7 +7,7 @@
     <body{% if user %} style = "background:#FFFFFF;"{% endif %}>
     <div class="page animated slideInUp" style="">
 {% if user %}{% else %}
-    <h1>
+    <h2>
     <div class="titlecard" >
     <center style="margin-top:40px;">The Rocking Chair</center>
 </div>
@@ -26,7 +26,7 @@
 <div class="titlecard" >
     <center style="margin-top:40px;">How to Write College Essays</center>
 </div>
-</h1>
+</h2>
 {% endif %}
 
   
@@ -51,6 +51,7 @@
                 <button type="submit" name="register" value="register" />register</button>
             </form>
              </div>
+            <br><div style="color:red;{% if error == False %}color:green;{% endif %}">{{msg}}</div><br>
             <br>Login to read and add to stories!
           </div>
         {% endif %}

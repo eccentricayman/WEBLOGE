@@ -1,6 +1,7 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:300);
 @import url('https://fonts.googleapis.com/css?family=Itim');
 @import url('https://fonts.googleapis.com/css?family=Poppins');
+@import url('https://fonts.googleapis.com/css?family=Permanent+Marker');
 
 .page{
  margin-left:310px;
@@ -13,9 +14,10 @@
     width: 100%;
     height: 100px;
     padding: 20px;
+    padding-top:5px;
     margin: 10px;
     background: #FFFFFF;
-    color: LightSteelBlue;
+    color: #5c5c5c;
 }
 
 .titlecard:hover {
@@ -77,6 +79,11 @@ h1 {
   font-family: "Roboto", sans-serif;
   color: LightSteelBlue;
   font-family: 'Itim', cursive;
+}
+
+h2 {
+  font-size: 34px;
+  font-family: 'Permanent Marker';
 }
 
 body {
