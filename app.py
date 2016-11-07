@@ -1,23 +1,29 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 import os
 import utils.addStory as AS
+import utils.loadStory as LS
 import utils.auth as auth
+import utils.genFeed as genFeed
 
 app = Flask(__name__)
 
 @app.route('/')
 def homepage():
     if session.get('username'):
-        return render_template('homepage.html', user=session['username'])
+        return render_template('homepage.html', user=session['username'], data = genFeed.myStories())
     return render_template('homepage.html')
 
 @app.route('/addStory')
-def add():
+def addForm():
     return render_template("addStory.html")
+
+@app.route("/result", methods = ['GET', 'POST'])
+def add():
+    return AS.addStory(request.form['name'], request.form['summary'], request.form['start'])
 
 @app.route("/loadStory", methods = ['GET', 'POST'])
 def loadS():
-    AS.addStory(request.form['name'], request.form['summary'], request.form['start'])
+    return LS.loadStory(request.form['id'])
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
