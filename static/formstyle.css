@@ -13,22 +13,61 @@
  font-family: 'Poppins', sans-serif;
 }
 
-.titlecard {
+.card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     border-radius: 5px; 
-    width: 50%;
-    height: 100px;
+    width: 80%;
+    
     padding: 20px;
     padding-top:5px;
     margin: 10px;
     
-    margin-left: 25%;
+    margin-left: 10%;
     background: #FFFFFF;
     color: #5c5c5c;
 }
 
-.titlecard:hover {
-    box-shadow: 0 16px 32px 0 rgba(0,0,0,0.6);
+.card p{
+	color: black;
+	font-family: "Roboto", sans-serif;
+	font-size: 14px;
+}
+
+.card input {
+  margin: 40px 25px;
+  width: 80%;
+  display: inline;
+  border: none;
+  padding: 10px 0;
+  border-bottom: solid 1px  #1abc9c;
+  transition: all 0.3s cubic-bezier(.64,.09,.08,1);
+  background: linear-gradient(to bottom, rgba(255,255,255,0) 96%,  #1abc9c 4%);
+  background-position: -200px 0;
+  background-size: 200px 100%;
+  background-repeat: no-repeat;
+  color: darken( #1abc9c, 20%);
+}
+
+.btn {
+  width: 10%;
+  display: inline-block;
+  margin: 0px;
+  padding: 0;
+  overflow: hidden;
+  border-width: 0;
+  outline: none;
+  border-radius: 2px;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .6);
+  background-color: #2ecc71;
+  color: #ecf0f1;
+  transition: background-color .3s;
+}
+.btn:hover, .btn:focus {
+  background-color: #27ae60;
+}
+.btn span {
+  display: block;
+  padding: 12px 24px;
 }
 
 .scrolling{
@@ -77,6 +116,28 @@
   transition: all 0.3 ease;
   cursor: pointer;
 }
+
+.fab {
+	animation-delay:1.9s;
+	z-index:900;
+    width: 100%;
+	display: inline-block;
+    height:100px;
+    position: fixed;
+    bottom:70px;;
+    right:70px;
+	  border:none;
+    font-size:31px;
+    color:white;
+    background-color:SteelBlue;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    -webkit-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .4);
+       -moz-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .4);
+            box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .4);
+}
+
 .sform button:hover,.form button:active,.form button:focus {
   background: LightSteelBlue;
 }

@@ -6,7 +6,9 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <head> <title> wot </title> </head>
     <body{% if user %} style = "background:LightGray;"{% endif %}>
-    {% if user %}<button class="fab">+</button>{% endif %}
+    {% if user %}<form action="/addstory">
+                <input class="fab animated bounceInDown" type="submit" value="+" />
+            </form>{% endif %}
         <div class="page animated slideInUp" style="">
             <h3>Your Feed</h3>
             <h2>
@@ -24,13 +26,13 @@
                         {% if user %}
                             <p> {{story[3][-1]}} </p>
                             <form method="POST" action="update">
-                                <input type="text" name="update" /> <br>
-                                <input type="submit" value="{{story[1]}}" name="storyID" />
+                                <input type="text" name="update" /> 
+                                <button class="btn" type="submit" value="{{story[1]}}" name="storyID" ><span>ADD</span></button>
                             </form>
                         {% endif %}
                     {% endif %}
                     </div>
-                    <p>-------------</p>
+                    
                 {% endfor %}
 
         </div>
