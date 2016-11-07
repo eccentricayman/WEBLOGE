@@ -31,12 +31,6 @@ def logout():
         session.pop('username')
     return redirect(url_for('homepage'))
 
-@app.route('/story')
-def myStory():
-    ##find num stories for this user on db
-    ##render template of user 
-    return render_template('story.html', username=request.form['user'])
-
 if __name__ == '__main__':
     if os.path.getsize("data/data.db") == 0:
         f = "data/data.db"
