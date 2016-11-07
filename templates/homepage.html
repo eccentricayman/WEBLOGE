@@ -14,8 +14,8 @@
                     <h1> {{ storyData[0] }} </h1>
                     <p> {{ storyData[1] }} </p>
                     <form action="/loadStory" method="POST">
-                        <input type="text" name="id" value= {{ storyData[2] }} style="display: none">
-                        <input type="submit" name="Read Story" value="">
+                        <input type="text" name="id" value="{{ storyData[2] }}" style="display: none"></input>
+                        <input type="submit" name="Read Story" value="Read"></input>
                 </div>
                 {% endfor %}
             </h2>

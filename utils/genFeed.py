@@ -7,10 +7,11 @@ def myStories():
     f="data/data.db"
     db=sqlite3.connect(f)
     c=db.cursor()
-
-    storyList=c.execute('SELECT name, summary, id FROM stories WHERE updater = %s'%(session['username']))
-    
-    for story in storyList:
-        myStoryList.append([story[0], story[1], story[2]])
-        
-    return myStoryList
+    try:
+        storyList=c.execute('SELECT name, summary, id FROM stories WHERE updater = %s'%(session['username']))
+        for story in storyList:
+            myStoryList.append([story[0], story[1], story[2]])
+            
+            return myStoryList
+    except:
+        return [["", "", ""]]
