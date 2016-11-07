@@ -35,7 +35,7 @@ def register(user, pw):
         db.close()
         return False,"Username taken"
     pw = sha256(pw).hexdigest()
-    c.execute('INSERT INTO users VALUES (?,?,"")', (user, pw))
+    c.execute('INSERT INTO users VALUES (?,?)', (user, pw))
     db.commit()
     db.close()
     print "Registered successfully"

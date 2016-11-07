@@ -46,7 +46,7 @@ if __name__ == '__main__':
         db = sqlite3.connect(f, check_same_thread=False)
         c = db.cursor()
         print "Initializing database"
-        c.execute("CREATE TABLE users (username TEXT, password TEXT, contributedStories TEXT)")
+        c.execute("CREATE TABLE users (username TEXT, password TEXT)")
         c.execute("CREATE TABLE stories (title TEXT, id INTEGER, updaters TEXT, updates TEXT)")
         db.commit()
         db.close()
