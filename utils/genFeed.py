@@ -1,13 +1,16 @@
 import sqlite3
-from flask import Flask, render_template
+from flask import Flask, render_template, session
 
-def myStories(session['username']):
+def myStories():
     myStoryList=[]
+    
     f="data.db"
     db=sqlite.connect(f)
     c=db.cursor()
-    storyList=c.execute('SELECT * FROM stories WHERE updater==session["username"]')
+
+    storyList=c.execute('SELECT name, summary, id FROM stories WHERE updater = %s'%(session['username']))
+    
     for story in storyList:
-        if(session['username'] == story[4]):
-            myStoryList.append(story[0])
+        myStoryList.append([story[0], story[1], story[2]])
+        
     return myStoryList
