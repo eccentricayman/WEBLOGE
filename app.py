@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, session, url_for, redirect
 import os
 import sqlite3
 import utils.addStory as AS
-import utils.loadStory as LS
 import utils.auth as auth
 import utils.genFeed as genFeed
 
@@ -21,10 +20,6 @@ def addForm():
 @app.route("/result", methods = ['GET', 'POST'])
 def add():
     return AS.addStory(request.form['name'], request.form['summary'], request.form['start'])
-
-@app.route("/loadStory", methods = ['GET', 'POST'])
-def loadS():
-    return LS.loadStory(request.form['id'])
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

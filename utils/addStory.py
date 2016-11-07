@@ -22,6 +22,6 @@ def addStory(name, summary, start):
 
     db.commit()
     db.close()
-    return render_template("loadStory.html", id = storyID)
+    return render_template("homepage.html", error = False, msg = "Story added!")
 
 
