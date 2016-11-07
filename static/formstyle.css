@@ -119,23 +119,27 @@
 
 .fab {
 	animation-delay:1.9s;
-	z-index:900;
     width: 100%;
 	display: inline-block;
     height:100px;
     position: fixed;
-    bottom:70px;;
-    right:70px;
-	  border:none;
+    bottom:30px;;
+    right:35px;
+	border:none;
     font-size:31px;
     color:white;
     background-color:SteelBlue;
     border-radius: 50%;
     width: 60px;
     height: 60px;
+    z-index: 100;
     -webkit-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .4);
        -moz-box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .4);
             box-shadow: 2px 3px 3px 0px rgba(41, 41, 41, .4);
+}
+
+.fab:hover {
+    background-color: #6c9dc6;
 }
 
 .sform button:hover,.form button:active,.form button:focus {

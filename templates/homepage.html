@@ -8,8 +8,12 @@
     {% if user %}<form action="/addstory">
                 <input class="fab animated bounceInDown" type="submit" value="+" />
             </form>{% endif %}
-        <div class="page animated slideInUp" style="">
-            <h3>Your Feed</h3>
+            <div class="page animated slideInUp" style="">
+                {%if user %}
+                <h3>Your Feed</h3>
+                {% else %}
+                <h3>Stories</h3>
+                {% endif %}
             <h2>
                 {% for story in stories %}
                     <div class="card">
