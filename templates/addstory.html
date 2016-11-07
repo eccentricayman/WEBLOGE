@@ -1,73 +1,14 @@
 <!DOCTYPE html>
 <html>
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='formstyle.css') }}" />
-    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='animate.min.css') }}" />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
-    <head> <title> wot </title> </head>
-    <body{% if user %} style = "background:#FFFFFF;"{% endif %}>
-        <div class="page animated slideInUp" style="">
-            {% if user %}
-            <h3>Your Feed</h3>
-            <h2>
-                {% for storyData in data %}
-                <div class="titlecard">
-                    <h1> {{ storyData[0] }} </h1>
-                    <p> {{ storyData[1] }} </p>
-                    <form action="/loadStory" method="POST">
-                        <input type="text" name="id" value="{{ storyData[2] }}" style="display: none"></input>
-                        <input type="submit" name="Read Story" value="Read"></input>
-                </div>
-                {% endfor %}
-            </h2>
-            {% else %}
-            <h3> &nbsp&nbspStories</h3>
-            <h2>
-                <div class="titlecard" >
-                    <center style="margin-top:40px;">The Rocking Chair</center>
-                </div>
-                <div class="titlecard" >
-                    <center style="margin-top:40px;">In the Pub</center>
-                </div>
-                <div class="titlecard" >
-                    <center style="margin-top:40px;">Streetside Maniac</center>
-                </div>
-                <div class="titlecard" >
-                    <center style="margin-top:40px;">The History of the Dab</center>
-                </div>
-                <div class="titlecard" >
-                    <center style="margin-top:40px;">Tree</center>
-                </div>
-                <div class="titlecard" >
-                    <center style="margin-top:40px;">How to Write College Essays</center>
-                </div>
-            </h2>
-            {% endif %}
-
-            
-        </div>
-        {% if user %}
-        <div class="sform animated slideInLeft" style = "background:LightSteelBlue;">
-            <h1 style = "margin-top:-10px; text-align: left; color:white; font-size:34px;">Strytym</h1> <i id="icon" class="fa fa-book" style="position:absolute;margin-top:-80px;margin-left:22px;text-shadow: 0px 0px rgb(123,137,155), 1px 1px rgb(130,145,164), 2px 2px rgb(136,152,172), 3px 3px rgb(143,159,180), 4px 4px rgb(150,167,189), 5px 5px rgb(156,174,197), 6px 6px rgb(163,181,205), 7px 7px rgb(169,189,214); font-size: 26px; color: rgb(255, 255, 255); height: 80px; width: 80px; line-height: 80px; border-radius: ; text-align: center; background-color: rgb(176, 196, 222);"></i>
-            <div style = "margin-top:450px;">
-                <form action="logout" method="post">
-                    <button type="submit" name="logout" value="logout" > logout </button>
-                </form>
-            </div>
-            <br>
-            <div style="color:white;">You are logged in as {{user}} </div>
-            {% else %}
-            <div class="sform animated slideInLeft"> <div class="animated fadeInDownBig" style="margin-top:75%;">
-                <h1  style = "margin-top:-10px; text-align: left; color:LightSteelBlue; font-size:34px;">Strytym</h1> <i id="icon" class="animated fadeInDownBig fa fa-book" style="position:absolute;margin-top:-85px;margin-left:22px;text-shadow: 0px 0px rgb(123,137,155), 1px 1px rgb(130,145,164), 2px 2px rgb(136,152,172), 3px 3px rgb(143,159,180), 4px 4px rgb(150,167,189), 5px 5px rgb(156,174,197), 6px 6px rgb(163,181,205), 7px 7px rgb(169,189,214); font-size: 26px; color: rgb(255, 255, 255); height: 80px; width: 80px; line-height: 80px; border-radius: ; text-align: center; "></i>
-                <form action="login" method="post">
-                    <input type="text" name="username" placeholder="username" />
-                    <input type="password" name="password" placeholder="password"/>
-                    <button type="submit" name="login" value="login" />login</button>
-                    <button type="submit" name="register" value="register" />register</button>
-                </form>
-            </div>
-            <br><div style="color:red;{% if error == False %}color:green;{% endif %}">{{msg}}</div><br>
-            <br>Login to read and add to stories!
-            </div>
-            {% endif %}
-    </body>
+  <head>
+    <title>Add Story</title>
+  </head>
+  <body>
+    <h1>Add a story!</h1>
+    <form action='/add' method="POST">
+      <input type="text" name="title" placeholder="story title">
+      <input type="text" name="story" placeholder="story">
+      <input type="submit" name="subStory" value="submit story">
+    </form>
+  </body>
 </html>

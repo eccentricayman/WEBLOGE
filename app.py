@@ -1,25 +1,34 @@
 from flask import Flask, render_template, request, session, url_for, redirect
 import os
 import sqlite3
-import utils.addStory as AS
 import utils.auth as auth
-import utils.genFeed as genFeed
+import utils.story as story
 
 app = Flask(__name__)
 
 @app.route('/')
 def homepage():
     if session.get('username'):
-        return render_template('homepage.html', user=session['username'], data = genFeed.myStories())
-    return render_template('homepage.html')
+        stories = story.fetch_stories(session['username'])
+        return render_template('homepage.html', user=session['username'], stories=stories)
+    stories = story.fetch_stories(None)
+    return render_template('homepage.html', stories=stories)
 
-@app.route('/addStory')
-def addForm():
-    return render_template("addStory.html")
-
-@app.route("/result", methods = ['GET', 'POST'])
+@app.route('/add', methods=['GET', 'POST'])
 def add():
-    return AS.addStory(request.form['name'], request.form['summary'], request.form['start'])
+    if session.get('username'):
+        return story.add_story(session,request)
+    return render_template("homepage.html")
+
+@app.route('/update', methods=['GET', 'POST'])
+def update():
+    if session.get('username'):
+        return story.update_story(session, request)
+    return redirect(url_for('homepage'))
+
+@app.route('/addstory')
+def addstory():
+    return render_template("addstory.html")
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
@@ -38,6 +47,7 @@ if __name__ == '__main__':
         c = db.cursor()
         print "Initializing database"
         c.execute("CREATE TABLE users (username TEXT, password TEXT, contributedStories TEXT)")
+        c.execute("CREATE TABLE stories (title TEXT, id INTEGER, updaters TEXT, updates TEXT)")
         db.commit()
         db.close()
     app.debug=True

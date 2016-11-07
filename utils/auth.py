@@ -20,9 +20,9 @@ def login(session, request):
         valid,msg = auth_user(username, password)
         if valid:
             session['username'] = username
-            return render_template("homepage.html", error=not valid, msg=msg, user=username)
+            return redirect(url_for('homepage'))
         return render_template("homepage.html", error=not valid, msg=msg)
-    return render_template("homepage.html")
+    return redirect(url_for('homepage'))
 
 def register(user, pw):
     f = "data/data.db"
