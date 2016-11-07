@@ -4,8 +4,8 @@ from flask import Flask, render_template, session
 def myStories():
     myStoryList=[]
     
-    f="data.db"
-    db=sqlite.connect(f)
+    f="data/data.db"
+    db=sqlite3.connect(f)
     c=db.cursor()
 
     storyList=c.execute('SELECT name, summary, id FROM stories WHERE updater = %s'%(session['username']))

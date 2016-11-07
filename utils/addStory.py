@@ -7,7 +7,7 @@ from flask import Flask, render_template, session
 
 def addStory(name, summary, start):
 
-    f = "data.db"
+    f = "data/data.db"
     db = sqlite3.connect(f)
     c = db.cursor()
 

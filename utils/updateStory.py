@@ -3,7 +3,7 @@ from flask import Flask, render_template, session
 
 def updateStory(storyID, update):
     
-    f = "data.db"
+    f = "data/data.db"
     db = sqlite3.connect(f)
     c = db.cursor()
 
