@@ -1,2 +1,2 @@
-# WEBLOGE
-WEB LOG 
+# Strytym
+IT'S STORY TIME GUYS
